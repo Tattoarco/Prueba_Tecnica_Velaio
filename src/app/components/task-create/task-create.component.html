@@ -1,0 +1,133 @@
+<section class="min-h-screen">
+  <div
+    class="w-full sm:w-3/4 md:w-2/5 h-auto bg-white border-4 border-[#210440] rounded-3xl flex flex-col items-center p-6 md:p-10 shadow-xl"
+  >
+    <h2 class="font-extrabold text-2xl mb-5 uppercase text-[#210440]">
+      Crear Tarea
+    </h2>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="w-full flex flex-col gap-4">
+      <div class="flex flex-col sm:flex-row justify-between gap-4">
+        <div class="flex flex-col w-full">
+          <label for="name" class="font-semibold text-[#210440]">
+            Nombre de la Tarea:
+          </label>
+          <input
+            id="name"
+            formControlName="nameTask"
+            class="w-full p-2 rounded-lg shadow-lg border bg-[#E958E] focus:outline-none focus:ring-2 focus:ring-[#FFBA00]"
+          />
+        </div>
+
+        <div class="flex flex-col w-full">
+          <label for="deadline" class="font-semibold text-[#210440]">
+            Fecha Límite:
+          </label>
+          <input
+            id="date"
+            type="date"
+            formControlName="date"
+            class="w-full p-2 rounded-lg shadow-lg border border-[#E958E] focus:outline-none focus:ring-2 focus:ring-[#FFBA00]"
+          />
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-xl mb-2 flex items-center gap-2 text-[#210440]">
+          <span class="material-symbols-outlined"> group </span>
+          Personas Asociadas
+        </h3>
+
+        <div class="flex flex-col">
+          <label for="fullName" class="font-semibold text-[#210440]">
+            Nombre Completo:
+          </label>
+          <input
+            id="fullName"
+            formControlName="fullName"
+            class="w-full p-2 rounded-lg shadow-lg border border-[#E958E] focus:outline-none focus:ring-2 focus:ring-[#FFBA00]"
+          />
+        </div>
+
+        <div class="flex flex-col mt-3">
+          <label for="age" class="font-semibold text-[#210440]">Edad:</label>
+          <input
+            id="age"
+            type="number"
+            formControlName="age"
+            class="w-full p-2 rounded-lg shadow-lg border border-[#E958E] focus:outline-none focus:ring-2 focus:ring-[#FFBA00]"
+          />
+        </div>
+
+        <div>
+          <h3 class="font-bold text-xl mb-2 flex items-center gap-2 text-[#210440]">
+            <span class="material-symbols-outlined"> psychology </span>
+            Habilidades
+          </h3>
+        
+          <div class="flex flex-col mb-3">
+            <!-- Aquí cambia formControlName a un método para agregar habilidades -->
+            <input
+              #skillInput
+              placeholder="Escribe una habilidad"
+              class="w-full p-2 rounded-lg shadow-lg border border-[#E958E] focus:outline-none focus:ring-2 focus:ring-[#FFBA00]"
+            />
+          </div>
+        
+          <button
+            type="button"
+            (click)="addSkill(skillInput.value); skillInput.value=''" 
+            class="flex items-center gap-1 bg-[#E958E] text-white px-3 py-1 rounded-lg hover:bg-[#FFBA00] transition"
+          >
+            <span class="material-symbols-outlined"> add </span>
+            Añadir Habilidad
+          </button>
+        
+          <div *ngFor="let skill of skills.controls; let i = index" class="flex items-center gap-3 mb-3 mt-3">
+            <input
+              [formControlName]="i"
+              class="w-full p-2 rounded-lg shadow-lg border border-[#E958E] focus:outline-none focus:ring-2 focus:ring-[#FFBA00]"
+            />
+            <button
+              type="button"
+              (click)="removeSkill(i)"
+              class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-[#FFBA00] transition"
+            >
+              <span class="material-symbols-outlined"> remove </span>
+              Eliminar
+            </button>
+          </div>
+        </div>
+        
+
+        <div class="flex gap-3 mt-4">
+          <button
+            type="button"
+            class="flex items-center gap-1 bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-[#FFBA00] transition"
+          >
+            <span class="material-symbols-outlined"> delete </span>
+            Eliminar Persona
+          </button>
+          <button
+            type="button"
+            class="flex items-center gap-1 bg-[#E958E] text-white px-3 py-1 rounded-lg hover:bg-[#FFBA00] transition bg-green-400"
+            (click)="toggleUsersComponent()"
+          >
+            <span class="material-symbols-outlined"> group_add </span>
+            Añadir Persona
+          </button>
+
+          <!-- Condición para mostrar el componente users -->
+          <app-users *ngIf="showUsersComponent"></app-users>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="mt-4 bg-[#210440] text-white p-3 rounded-lg shadow-lg hover:bg-[#E958E] flex justify-center gap-1 focus:scale-95 transition"
+      >
+        <span class="material-symbols-outlined"> task </span>
+        Crear Tarea
+      </button>
+    </form>
+  </div>
+</section>

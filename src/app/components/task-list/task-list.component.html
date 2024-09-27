@@ -1,0 +1,49 @@
+<section class="min-h-screen">
+  <div
+    class="w-full sm:w-3/4 md:w-3/5 shadow-xl bg-white border-4 border-[#210440] rounded-3xl p-6"
+  >
+    <h2
+      class="font-extrabold text-2xl mb-5 uppercase text-[#210440] justify-center items-center flex gap-2"
+    >
+      <span class="material-symbols-outlined"> fact_check </span> Lista de
+      Tareas
+    </h2>
+
+    <div class="mb-4 flex justify-between items-center">
+      <label for="filtros" class="font-semibold text-[#210440]">Filtros:</label>
+      <select
+        id="filtros"
+        class="p-2 rounded-lg border border-[#E958E] focus:outline-none focus:ring-2 focus:ring-[#FFBA00]"
+      >
+        <option value="todas">Todas</option>
+        <option value="pendientes">Pendientes</option>
+        <option value="completadas">Completadas</option>
+      </select>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white rounded-lg shadow-md">
+        <thead class="bg-[#210440] text-white">
+          <tr>
+            <th class="py-2 px-4 text-left">Estado</th>
+            <th class="py-2 px-4 text-left">Nombre de la Tarea</th>
+            <th class="py-2 px-4 text-left">Fecha Límite</th>
+            <th class="py-2 px-4 text-left">Personas asocidas</th>
+            <th class="py-2 px-4 text-left">Habilidades</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="bg-gray-100 transition duration-300 hover:bg-slate-300"
+          >
+            <td class="py-2 px-4 text-[#210440]">Pendiente</td>
+            <td class="py-2 px-4 text-[#210440]">Tarea 1</td>
+            <td class="py-2 px-4 text-[#210440]">2024-09-30</td>
+            <td class="py-2 px-4 text-[#210440]">Juan Pérez (20)</td>
+            <td class="py-2 px-4 text-[#210440]">JavaScript, CSS, Java</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
